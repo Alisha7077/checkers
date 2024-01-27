@@ -4,9 +4,6 @@ import './HomePage.css'
 
 const HomePage = () => {
   const [gameStarted, setGameStarted] = useState(false);
-  const [backgroundColor, setBackgroundColor] = useState('skyblue');
-  const [birdColor, setBirdColor] = useState('yellow');
-  const [obstacleColor, setObstacleColor] = useState('green');
 
   const startGame = () => {
     setGameStarted(true);
@@ -20,8 +17,7 @@ const HomePage = () => {
           <button onClick={startGame}>Play</button>
         </>
       ) : (
-        <GameArea
-          backgroundColor={backgroundColor}/>
+        <GameArea/>
       )}
     </div>
   );
