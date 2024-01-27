@@ -52,7 +52,7 @@ const GameArea = ({ backgroundColor, birdColor, obstacleColor }) => {
     }
 
     setObstacles((prev) =>
-      prev.map((obstacle) => (obstacle.x > -50 ? { ...obstacle, x: obstacle.x - 20 } : { x: window.innerWidth, upperHeight: generateRandomHeight(), gap: 299 }))
+      prev.map((obstacle) => (obstacle.x > -50 ? { ...obstacle, x: obstacle.x - 10 } : { x: window.innerWidth, upperHeight: generateRandomHeight(), gap: 299 }))
     );
 
     if (obstacles.some(obstacle => (
