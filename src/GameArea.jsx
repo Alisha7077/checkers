@@ -4,14 +4,14 @@ import Pipe from './Pipe';
 
 const GameArea = ({ backgroundColor, birdColor, obstacleColor }) => {
   const [birdStyle, setBirdStyle] = useState({ x: 100, y: 100 });
-  const [obstacles, setObstacles] = useState([{ x: 300, upperHeight: 100, gap: 300 }]);
+  const [obstacles, setObstacles] = useState([{ x: 300, upperHeight: 100, gap: 200 }]);
   const [gameOver, setGameOver] = useState(false);
   const [score, setScore] = useState(0);
   const [gameActive, setGameActive] = useState(true);
 
   const jump = () => {
     if (gameActive) {
-      setBirdStyle((prev) => ({ ...prev, y: prev.y - 40 }));
+      setBirdStyle((prev) => ({ ...prev, y: prev.y - 70 }));
     }
   };
 
@@ -23,7 +23,7 @@ const GameArea = ({ backgroundColor, birdColor, obstacleColor }) => {
     const upperHeight = generateRandomHeight();
     setObstacles((prev) => [
       ...prev,
-      { x: window.innerWidth, upperHeight, gap: 300 },
+      { x: window.innerWidth, upperHeight, gap: 200 },
     ]);
   };
 
@@ -35,7 +35,7 @@ const GameArea = ({ backgroundColor, birdColor, obstacleColor }) => {
 
   const startGame = () => {
     setBirdStyle({ x: 100, y: 100 });
-    setObstacles([{ x: 300, upperHeight: 100, gap: 300 }]);
+    setObstacles([{ x: 300, upperHeight: 100, gap: 200 }]);
     setGameOver(false);
     setScore(0);
     setGameActive(true);
@@ -48,11 +48,11 @@ const GameArea = ({ backgroundColor, birdColor, obstacleColor }) => {
 
   const gameLoop = () => {
     if (birdStyle.y < window.innerHeight - 50) {
-      setBirdStyle((prev) => ({ ...prev, y: prev.y + 3 }));
+      setBirdStyle((prev) => ({ ...prev, y: prev.y + 6 }));
     }
 
     setObstacles((prev) =>
-      prev.map((obstacle) => (obstacle.x > -50 ? { ...obstacle, x: obstacle.x - 10 } : { x: window.innerWidth, upperHeight: generateRandomHeight(), gap: 299 }))
+      prev.map((obstacle) => (obstacle.x > -50 ? { ...obstacle, x: obstacle.x - 10 } : { x: window.innerWidth, upperHeight: generateRandomHeight(), gap: 200 }))
     );
 
     if (obstacles.some(obstacle => (
@@ -83,7 +83,7 @@ const GameArea = ({ backgroundColor, birdColor, obstacleColor }) => {
   };
 
   useEffect(() => {
-    const gameInterval = setInterval(gameLoop, 20);
+    const gameInterval = setInterval(gameLoop, 16);
     window.addEventListener('keydown', handleKeyPress);
 
     return () => {
